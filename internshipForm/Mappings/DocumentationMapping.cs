@@ -21,7 +21,7 @@ namespace internshipForm.Mappings
             Map(x => x.Language, "LANGUAGE");
 
 
-            HasMany(x => x.Tasks).KeyColumn("DOCUMENT_NUMBER").LazyLoad();
+            HasMany(x => x.Tasks).KeyColumn("DOCUMENTATION_NUMBER").LazyLoad();
 
 
         }

@@ -25,11 +25,11 @@ namespace internshipForm.Mappings
             Map(x => x.DueDate, "DUE_DATE");
 
             //mapiranje veze 1:N Employee-Task
-            References(x => x.Assignee).Column("ASSIGNEE").LazyLoad();
+            References(x => x.Assignee).Column("ASSIGNEE").LazyLoad().Cascade.All();
 
 
             //mapiranje veze 1:N Documentation-Task
-            References(x => x.Documentation).Column("DOCUMENTATION_NUMBER").LazyLoad();
+            References(x => x.Documentation).Column("DOCUMENTATION_NUMBER").LazyLoad().Cascade.All();
 
         }
     }

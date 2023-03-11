@@ -484,6 +484,7 @@
             this.btnUpdateDocumentation.TabIndex = 3;
             this.btnUpdateDocumentation.Text = "Update";
             this.btnUpdateDocumentation.UseVisualStyleBackColor = true;
+            this.btnUpdateDocumentation.Click += new System.EventHandler(this.btnUpdateDocumentation_Click);
             // 
             // btnReadDocumentation
             // 

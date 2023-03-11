@@ -8,7 +8,8 @@ namespace internshipForm.Model
 {
     public class Documentation
     {
-        public virtual int Id { get; protected set; }
+        //protected set 
+        public virtual int Id { get;  set; }
         public virtual string ProjectName { get; set; }
         public virtual int Length { get; set; }
         public virtual string Language { get; set; }

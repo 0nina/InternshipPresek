@@ -178,6 +178,8 @@ namespace internshipForm
                 ISession s = DataLayer.GetSession();
 
                 //pribavljanje employee-a kome treba dodeliti task
+                //MORA DA SE SREDE ID-jevi da ih baza sama dodljuje, u suprotnom je sve ok
+
                 internshipForm.Model.Employee employee = new Model.Employee();
                 int idEmployee = Int32.Parse(txtAssignee.Text);
 
@@ -192,14 +194,17 @@ namespace internshipForm
                 task.Title = txtTitle.Text;
                 task.DueDate = Convert.ToDateTime(txtDueDate.Text);
                 task.Description = txtDescription.Text;
+                task.Documentation = doc;
 
                 employee.Tasks.Add(task);
                 doc.Tasks.Add(task);
 
-                MessageBox.Show("Task successfully created.. ");
+                s.Save(task);
+
                 s.Flush();
                 s.Close();
 
+                MessageBox.Show("Task successfully created.. ");
             }
             catch (Exception ex)
             {
@@ -247,29 +252,36 @@ namespace internshipForm
                 int idTask = Int32.Parse(txtIdTask.Text);
                 internshipForm.Model.Task task = s.Load<internshipForm.Model.Task>(idTask);
 
-                if (txtTitle.Text != null)
+                if(!String.IsNullOrEmpty(txtTitle.Text))
                     task.Title = txtTitle.Text;
-                if (txtDescription.Text != null)
-                    task.Description = txtDescription.Text;
-                if (txtDueDate.Text != null)
+
+                if (!String.IsNullOrEmpty(txtDueDate.Text))
                     task.DueDate = Convert.ToDateTime(txtDueDate.Text);
+
+                if (!String.IsNullOrEmpty(txtDescription.Text))
+                    task.Description = txtDescription.Text;
+
 
                 //Convert.ToDateTime(iDate)
                 //assignee
-                if (txtAssignee.Text != null)
+                if (!String.IsNullOrEmpty(txtAssignee.Text)) 
                 {
                     int idAssignee = Int32.Parse(txtAssignee.Text);
-                    task.Assignee = s.Load<internshipForm.Model.Employee>(idAssignee);
-
+                    Employee em = s.Load<internshipForm.Model.Employee>(idAssignee);
+                    task.Assignee = em;
                 }
-                if (txtIdDoc.Text != null)
+                if (!String.IsNullOrEmpty(txtIdDoc.Text))
                 {
                     int idDoc = Int32.Parse(txtIdDoc.Text);
+                    task.Documentation = s.Load<internshipForm.Model.Documentation>(idDoc);
                 }
                 s.Update(task);
 
                 s.Flush();
                 s.Close();
+
+                MessageBox.Show("Task updated successfully..");
+
             }
             catch (Exception ex)
             {
@@ -284,7 +296,7 @@ namespace internshipForm
             {
                 ISession s = DataLayer.GetSession();
 
-                if (txtAssignee == null)
+                if ( String.IsNullOrEmpty(txtIdTask.Text))
                 {
                     MessageBox.Show("Enter task id that you wish to delete");
                     return;
@@ -296,7 +308,7 @@ namespace internshipForm
                 s.Delete(task);
                 s.Flush();
                 s.Close();
-
+                MessageBox.Show("Task deleted successfully..");
 
             }
             catch (Exception ex)
@@ -434,6 +446,46 @@ namespace internshipForm
                 s.Close();
                 
                 MessageBox.Show("Documentation successfully deleted.. ");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnUpdateDocumentation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                if (tbId.Text == null)
+                {
+                    MessageBox.Show("Enter documentation id that you wish to update");
+                    return;
+                }
+
+                int idDoc = Int32.Parse(txtIdDocumentation.Text);
+                internshipForm.Model.Documentation doc = s.Load<internshipForm.Model.Documentation>(idDoc);
+
+                if (!String.IsNullOrEmpty(txtProjectName.Text))
+                    doc.ProjectName = txtProjectName.Text;
+
+                if (!String.IsNullOrEmpty(txtLength.Text))
+                    doc.Length = Int32.Parse( txtLength.Text) ;
+
+                if (!String.IsNullOrEmpty(txtLanguage.Text))
+                    doc.Language = txtLanguage.Text;
+
+
+                s.Update(doc);
+
+                s.Flush();
+                s.Close();
+
+                MessageBox.Show("Documentation file successfully updated..");
+
+
             }
             catch (Exception ex)
             {
