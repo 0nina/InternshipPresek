@@ -7,6 +7,7 @@ using NHibernate;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using internshipForm.Mappings;
+using MySql;
 
 namespace internshipForm
 {
@@ -34,24 +35,28 @@ namespace internshipForm
 
         //konfiguracija i kreiranje session factory
         private static ISessionFactory CreateSessionFactory()
-        {
-            try
-            {
-                var cfg = OracleManagedDataClientConfiguration.Oracle10
-                .ConnectionString(c =>
-                    c.Is("DATA SOURCE=gislab-oracle.elfak.ni.ac.rs:1521/SBP_PDB;PERSIST SECURITY INFO=True;USER ID=aca;Password=aca"));
+        {                                                      
+                //konfiguracija i kreiranje session factory
+                    try
+                    {
+                    /*MsSqlConfiguration.MsSql2005
+    .ConnectionString(c => c
+      .FromAppSetting("connectionString"))
+    .ShowSql()*/
+                    //mora da postoji escape karakter u imenu servera zbog \
+                        var cfg = MsSqlConfiguration.MsSql2012
+                        .ConnectionString("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Lazar & Nina\\source\\repos\\Internship\\internshipForm\\db.mdf\";Integrated Security=True").ShowSql();
 
-                return Fluently.Configure()
-                    .Database(cfg)
-                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<EmployeeMapping>())
-                    //.ExposeConfiguration(BuildSchema)
-                    .BuildSessionFactory();
-            }
-            catch (Exception ec)
-            {
-                System.Windows.Forms.MessageBox.Show(ec.Message);
-                return null;
-            }
+                        return Fluently.Configure()
+                            .Database(cfg)
+                            .Mappings(m => m.FluentMappings.AddFromAssemblyOf<EmployeeMapping>())
+                            .BuildSessionFactory();
+                    }
+                    catch (Exception ec)
+                    {
+                        System.Windows.Forms.MessageBox.Show(ec.Message);
+                        return null;
+                    }
 
         }
     }

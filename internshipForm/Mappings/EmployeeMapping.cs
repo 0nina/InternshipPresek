@@ -11,17 +11,17 @@ namespace internshipForm.Mappings
     {
         public EmployeeMapping()
         {
-            Table("employee");
+            Table("EMPLOYEE");
 
             //tako se mapira primarni kljuc i koristicu trigger za generisanje primarnog kljuca
-            Id(x => x.Id, "id").GeneratedBy.TriggerIdentity();
+            Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
             
-            Map(x => x.Name, "name");
-            Map(x => x.Email, "email");
-            Map(x => x.PhoneNumber, "phoneNumber");
-            Map(x => x.DateOfBirth, "dateOfBirth");
-            Map(x => x.MonthlySalary, "monthlySalary");
-            HasMany(x => x.Tasks).KeyColumn("assignee").LazyLoad();
+            Map(x => x.Name, "NAME");
+            Map(x => x.Email, "EMAIL");
+            Map(x => x.PhoneNumber, "PHONE_NUMBER");
+            Map(x => x.DateOfBirth, "DATE_OF_BIRTH");
+            Map(x => x.MonthlySalary, "MONTHLY_SALARY");
+            HasMany(x => x.Tasks).KeyColumn("ASSIGNEE").LazyLoad();
         }
     }
 }

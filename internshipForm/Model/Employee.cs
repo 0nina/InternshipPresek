@@ -13,7 +13,7 @@ namespace internshipForm.Model
         public virtual string Name { get; set; }
         public virtual string Email { get; set; }
         public virtual string PhoneNumber { get; set; }
-        public virtual string DateOfBirth { get; set; }
+        public virtual DateTime DateOfBirth { get; set; }
         public virtual int MonthlySalary { get; set; }
         //modeliramo 1:N   ;  1 employee izvrsava vise taskova
         public virtual IList<Task> Tasks { get; set; }
