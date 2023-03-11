@@ -413,9 +413,17 @@ namespace internshipForm
 
                 ISession s = DataLayer.GetSession();
 
-                IList<Model.Task> tasks = new List<Model.Task>();
+                IQuery q = s.CreateQuery("FROM TASK AS s ORDER BY s.ID");
+
+                IList<internshipForm.Model.Task> tasks = (IList<internshipForm.Model.Task>)q.List<Model.Task>();
                 //vracamo listu taskova
                 
+                foreach(Model.Task task in tasks)
+                {
+                    MessageBox.Show("Currently registered tasks: " + task.Title + " ; " + task.Description);
+                }
+
+                s.Close();
 
             }
             catch(Exception ex)
@@ -492,5 +500,29 @@ namespace internshipForm
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IList<Employee> employees = s.QueryOver<Employee>().List<Employee>();
+
+                foreach(Employee emp in employees)
+                {
+                    MessageBox.Show(" Employee name: " + emp.Name + " contact : " + emp.Email, "Current employees");
+                }
+
+                s.Close();
+
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }

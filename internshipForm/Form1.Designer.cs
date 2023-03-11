@@ -82,6 +82,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnMaxTasks = new System.Windows.Forms.Button();
+            this.btnSort = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -299,7 +301,7 @@
             // 
             // txtIdTask
             // 
-            this.txtIdTask.Location = new System.Drawing.Point(511, 123);
+            this.txtIdTask.Location = new System.Drawing.Point(511, 103);
             this.txtIdTask.Name = "txtIdTask";
             this.txtIdTask.Size = new System.Drawing.Size(132, 22);
             this.txtIdTask.TabIndex = 7;
@@ -307,7 +309,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(425, 123);
+            this.label15.Location = new System.Drawing.Point(449, 103);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(21, 16);
             this.label15.TabIndex = 7;
@@ -572,6 +574,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnSort);
+            this.groupBox4.Controls.Add(this.btnMaxTasks);
             this.groupBox4.Controls.Add(this.btnShowAllTasks);
             this.groupBox4.Controls.Add(this.btnCreateStaticTask);
             this.groupBox4.Controls.Add(this.button5);
@@ -580,7 +584,7 @@
             this.groupBox4.Controls.Add(this.button2);
             this.groupBox4.Location = new System.Drawing.Point(720, 20);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(391, 352);
+            this.groupBox4.Size = new System.Drawing.Size(378, 610);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Operations";
@@ -640,6 +644,25 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Shot All Employees";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // btnMaxTasks
+            // 
+            this.btnMaxTasks.Location = new System.Drawing.Point(26, 275);
+            this.btnMaxTasks.Name = "btnMaxTasks";
+            this.btnMaxTasks.Size = new System.Drawing.Size(341, 33);
+            this.btnMaxTasks.TabIndex = 7;
+            this.btnMaxTasks.Text = "Employees with max amount of tasks";
+            this.btnMaxTasks.UseVisualStyleBackColor = true;
+            // 
+            // btnSort
+            // 
+            this.btnSort.Location = new System.Drawing.Point(26, 314);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(341, 28);
+            this.btnSort.TabIndex = 8;
+            this.btnSort.Text = "Sort By Salary";
+            this.btnSort.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -721,6 +744,8 @@
         private System.Windows.Forms.TextBox txtIdTask;
         private System.Windows.Forms.Button btnCreateStaticTask;
         private System.Windows.Forms.Button btnShowAllTasks;
+        private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.Button btnMaxTasks;
     }
 }
 
