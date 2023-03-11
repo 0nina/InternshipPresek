@@ -52,10 +52,17 @@ namespace internshipForm
 
                 Model.Employee emp = new Model.Employee();
 
+                //ostaje da resim problem za ID
                 emp.Name = txtName.Text;
                 emp.Email = txtEmail.Text;
                 emp.DateOfBirth = Convert.ToDateTime(txtDoB.Text);
                 emp.PhoneNumber = txtPhoneNumber.Text;
+                emp.MonthlySalary = Int32.Parse(txtSalary.Text);
+                emp.Id = Int32.Parse(tbId.Text); ;
+
+
+                MessageBox.Show("Name : " + emp.Name + "email " + emp.Email + "Date of birth " + emp.DateOfBirth + "phone num " + emp.PhoneNumber);
+
 
                 s.Save(emp);
 
@@ -80,7 +87,7 @@ namespace internshipForm
                 int idEmployee = Int32.Parse(tbId.Text);
 
                 internshipForm.Model.Employee employee = s.Load<internshipForm.Model.Employee>(idEmployee);
-                MessageBox.Show(employee.Name + " " + employee.Email);
+                MessageBox.Show("Employee name: " + employee.Name + " email: " + employee.Email);
 
                 s.Close();
             }
@@ -106,19 +113,25 @@ namespace internshipForm
                 int idEmployee = Int32.Parse(tbId.Text);
                 internshipForm.Model.Employee employee = s.Load<internshipForm.Model.Employee>(idEmployee);
 
-                if (txtName.Text != null)
+                if ( !String.IsNullOrEmpty(txtName.Text) )
                     employee.Name = txtName.Text;
-                if (txtEmail.Text != null)
+
+                if (!String.IsNullOrEmpty(txtEmail.Text))
                     employee.Email = txtEmail.Text;
-                if (txtPhoneNumber.Text != null)
+
+                if (!String.IsNullOrEmpty(txtPhoneNumber.Text))
                     employee.PhoneNumber = txtPhoneNumber.Text;
-                if (txtDoB.Text != null)
+
+                if (!String.IsNullOrEmpty(txtDoB.Text))
                     employee.DateOfBirth = Convert.ToDateTime(txtDoB.Text);
 
                 s.Update(employee);
 
                 s.Flush();
                 s.Close();
+
+                MessageBox.Show("Employee successfully updated..");
+
             }
             catch (Exception ex)
             {
@@ -143,6 +156,12 @@ namespace internshipForm
                 internshipForm.Model.Employee employee = s.Load<internshipForm.Model.Employee>(idEmployee);
 
                 s.Delete(employee);
+
+                MessageBox.Show("Employee successfully deleted.. ");
+
+
+                s.Flush();
+
                 s.Close();
             }
             catch (Exception ex)
@@ -160,7 +179,7 @@ namespace internshipForm
 
                 //pribavljanje employee-a kome treba dodeliti task
                 internshipForm.Model.Employee employee = new Model.Employee();
-                int idEmployee = Int32.Parse(txtIdEmployee.Text);
+                int idEmployee = Int32.Parse(txtAssignee.Text);
 
                 employee = s.Load<internshipForm.Model.Employee>(idEmployee);
 
@@ -177,8 +196,10 @@ namespace internshipForm
                 employee.Tasks.Add(task);
                 doc.Tasks.Add(task);
 
+                MessageBox.Show("Task successfully created.. ");
                 s.Flush();
                 s.Close();
+
             }
             catch (Exception ex)
             {
@@ -197,7 +218,10 @@ namespace internshipForm
                 int idTask = Int32.Parse(txtIdTask.Text);
                 task = s.Load<internshipForm.Model.Task>(idTask);
 
-                MessageBox.Show(task.Title);
+                if (task == null)
+                    MessageBox.Show("There is no such task");
+
+                MessageBox.Show("Selected task is: " + task.Title);
 
 
                 s.Close();
@@ -260,12 +284,13 @@ namespace internshipForm
             {
                 ISession s = DataLayer.GetSession();
 
-                if (txtIdEmployee == null)
+                if (txtAssignee == null)
                 {
                     MessageBox.Show("Enter task id that you wish to delete");
                     return;
                 }
-                int idTask = Int32.Parse(txtIdEmployee.Text);
+                //proveriti
+                int idTask = Int32.Parse(txtIdTask.Text);
                 Model.Task task = s.Load<internshipForm.Model.Task>(idTask);
 
                 s.Delete(task);
@@ -293,7 +318,7 @@ namespace internshipForm
                 int IdDocumentation = Int32.Parse(txtIdDocumentation.Text);
 
                 internshipForm.Model.Documentation doc = s.Load<internshipForm.Model.Documentation>(IdDocumentation);
-                MessageBox.Show(doc.ProjectName + " " + doc.Language);
+                MessageBox.Show("Project name : " + doc.ProjectName + " in language: " + doc.Language);
 
                 s.Close();
             }
@@ -361,6 +386,54 @@ namespace internshipForm
                 s.Flush();
                 s.Close();
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        private void btnShowAllTasks_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                ISession s = DataLayer.GetSession();
+
+                IList<Model.Task> tasks = new List<Model.Task>();
+                //vracamo listu taskova
+                
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDeleteDocumentation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                if (txtIdDocumentation.Text == null)
+                {
+                    MessageBox.Show("Enter documentation Id ");
+                }
+
+                int idDoc = Int32.Parse(txtIdDocumentation.Text);
+
+                internshipForm.Model.Documentation doc = s.Load<internshipForm.Model.Documentation>(idDoc);
+
+
+                s.Delete(doc);
+
+                s.Flush();
+                s.Close();
+                
+                MessageBox.Show("Documentation successfully deleted.. ");
             }
             catch (Exception ex)
             {

@@ -15,12 +15,13 @@ namespace internshipForm.Mappings
             Table("DOCUMENTATION");
 
             Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
+            
             Map(x => x.ProjectName, "PROJECT_NAME");
             Map(x => x.Length, "LENGTH");
             Map(x => x.Language, "LANGUAGE");
 
 
-            HasMany(x => x.Tasks).KeyColumn("DOCUMENT_ID").LazyLoad();
+            HasMany(x => x.Tasks).KeyColumn("DOCUMENT_NUMBER").LazyLoad();
 
 
         }

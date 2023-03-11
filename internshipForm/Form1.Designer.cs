@@ -50,8 +50,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtIdDoc = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.lblId = new System.Windows.Forms.Label();
-            this.txtIdEmployee = new System.Windows.Forms.TextBox();
             this.txtAssignee = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtDueDate = new System.Windows.Forms.TextBox();
@@ -78,12 +76,12 @@
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnShowAllTasks = new System.Windows.Forms.Button();
+            this.btnCreateStaticTask = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnCreateStaticTask = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -278,8 +276,6 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.txtIdDoc);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.lblId);
-            this.groupBox2.Controls.Add(this.txtIdEmployee);
             this.groupBox2.Controls.Add(this.txtAssignee);
             this.groupBox2.Controls.Add(this.txtDescription);
             this.groupBox2.Controls.Add(this.txtDueDate);
@@ -327,29 +323,11 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(77, 92);
+            this.label14.Location = new System.Drawing.Point(47, 92);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(109, 16);
+            this.label14.Size = new System.Drawing.Size(146, 16);
             this.label14.TabIndex = 5;
-            this.label14.Text = "Id documentation";
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(401, 89);
-            this.lblId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(86, 16);
-            this.lblId.TabIndex = 11;
-            this.lblId.Text = "Id Employee:";
-            // 
-            // txtIdEmployee
-            // 
-            this.txtIdEmployee.Location = new System.Drawing.Point(511, 89);
-            this.txtIdEmployee.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIdEmployee.Name = "txtIdEmployee";
-            this.txtIdEmployee.Size = new System.Drawing.Size(132, 22);
-            this.txtIdEmployee.TabIndex = 2;
+            this.label14.Text = "documentation number:";
             // 
             // txtAssignee
             // 
@@ -496,6 +474,7 @@
             this.btnDeleteDocumentation.TabIndex = 3;
             this.btnDeleteDocumentation.Text = "Delete";
             this.btnDeleteDocumentation.UseVisualStyleBackColor = true;
+            this.btnDeleteDocumentation.Click += new System.EventHandler(this.btnDeleteDocumentation_Click);
             // 
             // btnUpdateDocumentation
             // 
@@ -592,18 +571,38 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnShowAllTasks);
             this.groupBox4.Controls.Add(this.btnCreateStaticTask);
             this.groupBox4.Controls.Add(this.button5);
             this.groupBox4.Controls.Add(this.button4);
             this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Location = new System.Drawing.Point(720, 20);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(391, 352);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Operations";
+            // 
+            // btnShowAllTasks
+            // 
+            this.btnShowAllTasks.Location = new System.Drawing.Point(26, 38);
+            this.btnShowAllTasks.Name = "btnShowAllTasks";
+            this.btnShowAllTasks.Size = new System.Drawing.Size(341, 30);
+            this.btnShowAllTasks.TabIndex = 7;
+            this.btnShowAllTasks.Text = "Show All Tasks";
+            this.btnShowAllTasks.UseVisualStyleBackColor = true;
+            this.btnShowAllTasks.Click += new System.EventHandler(this.btnShowAllTasks_Click);
+            // 
+            // btnCreateStaticTask
+            // 
+            this.btnCreateStaticTask.Location = new System.Drawing.Point(26, 225);
+            this.btnCreateStaticTask.Name = "btnCreateStaticTask";
+            this.btnCreateStaticTask.Size = new System.Drawing.Size(341, 38);
+            this.btnCreateStaticTask.TabIndex = 5;
+            this.btnCreateStaticTask.Text = "Create Static Task";
+            this.btnCreateStaticTask.UseVisualStyleBackColor = true;
+            this.btnCreateStaticTask.Click += new System.EventHandler(this.btnCreateStaticTask_Click);
             // 
             // button5
             // 
@@ -640,25 +639,6 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Shot All Employees";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(26, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(341, 33);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Show All Tasks";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnCreateStaticTask
-            // 
-            this.btnCreateStaticTask.Location = new System.Drawing.Point(26, 225);
-            this.btnCreateStaticTask.Name = "btnCreateStaticTask";
-            this.btnCreateStaticTask.Size = new System.Drawing.Size(341, 38);
-            this.btnCreateStaticTask.TabIndex = 5;
-            this.btnCreateStaticTask.Text = "Create Static Task";
-            this.btnCreateStaticTask.UseVisualStyleBackColor = true;
-            this.btnCreateStaticTask.Click += new System.EventHandler(this.btnCreateStaticTask_Click);
             // 
             // Form1
             // 
@@ -716,8 +696,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox txtIdEmployee;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtProjectName;
         private System.Windows.Forms.Label label11;
@@ -736,12 +714,12 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtIdDoc;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtIdTask;
         private System.Windows.Forms.Button btnCreateStaticTask;
+        private System.Windows.Forms.Button btnShowAllTasks;
     }
 }
 
