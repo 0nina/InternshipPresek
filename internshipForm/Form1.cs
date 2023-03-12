@@ -599,10 +599,10 @@ namespace internshipForm
 
         private void btnMaxTasks_Click(object sender, EventArgs e)
         {
-            /*SELECT * FROM EMPLOYEE WHERE ID IN ( SELECT TOP 2 ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-05-01' AND '2023-05-30' GROUP BY ASSIGNEE  ORDER BY COUNT(ID) DESC);*/
 
             try
             {
+                
                 ISession s = DataLayer.GetSession();
 
                 ISQLQuery query = s.CreateSQLQuery("SELECT * FROM EMPLOYEE WHERE ID IN ( SELECT TOP 5 ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-04-01' AND '2023-04-30' GROUP BY ASSIGNEE  ORDER BY COUNT(ID) DESC);");
@@ -628,6 +628,8 @@ namespace internshipForm
         {
             try
             {
+                //Employee: input ID in field Employee section (tbId)
+
                 int employeeId = Int32.Parse(tbId.Text);
 
                 ISession s = DataLayer.GetSession();
@@ -678,7 +680,7 @@ namespace internshipForm
         {
             try
             {
-                //input ID in field "Documentation number: " in Tasks section
+                //input ID in field "Documentation number: " in Tasks section (txtIdDoc name)
 
                 ISession s = DataLayer.GetSession();
 
@@ -705,9 +707,25 @@ namespace internshipForm
         
         }
 
+        private void btnCreateStaticEmployee_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
 
+                Model.Employee employee = new Model.Employee() { DateOfBirth = DateTime.Today, MonthlySalary = 123456, PhoneNumber = "069242424", Name = "MarcBlack@gmail.com", Email = "markBlack" };
 
+                s.Save(employee);
 
+                s.Flush();
+                s.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
 

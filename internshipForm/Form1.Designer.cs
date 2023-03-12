@@ -77,7 +77,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnShowAllTasks = new System.Windows.Forms.Button();
-            this.btnCreateStaticTask = new System.Windows.Forms.Button();
             this.btnTasksForEmployee = new System.Windows.Forms.Button();
             this.btnTasksEmployees = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -86,6 +85,7 @@
             this.btnEmployeesWithTasksInAMonth = new System.Windows.Forms.Button();
             this.btnMaxTasksDocumentation = new System.Windows.Forms.Button();
             this.btnAllTasksFromDocumentation = new System.Windows.Forms.Button();
+            this.btnCreateStaticEmployee = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -576,13 +576,13 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnCreateStaticEmployee);
             this.groupBox4.Controls.Add(this.btnAllTasksFromDocumentation);
             this.groupBox4.Controls.Add(this.btnMaxTasksDocumentation);
             this.groupBox4.Controls.Add(this.btnEmployeesWithTasksInAMonth);
             this.groupBox4.Controls.Add(this.btnSort);
             this.groupBox4.Controls.Add(this.btnMaxTasks);
             this.groupBox4.Controls.Add(this.btnShowAllTasks);
-            this.groupBox4.Controls.Add(this.btnCreateStaticTask);
             this.groupBox4.Controls.Add(this.btnTasksForEmployee);
             this.groupBox4.Controls.Add(this.btnTasksEmployees);
             this.groupBox4.Controls.Add(this.button2);
@@ -602,16 +602,6 @@
             this.btnShowAllTasks.Text = "Show All Tasks";
             this.btnShowAllTasks.UseVisualStyleBackColor = true;
             this.btnShowAllTasks.Click += new System.EventHandler(this.btnShowAllTasks_Click);
-            // 
-            // btnCreateStaticTask
-            // 
-            this.btnCreateStaticTask.Location = new System.Drawing.Point(26, 225);
-            this.btnCreateStaticTask.Name = "btnCreateStaticTask";
-            this.btnCreateStaticTask.Size = new System.Drawing.Size(341, 38);
-            this.btnCreateStaticTask.TabIndex = 5;
-            this.btnCreateStaticTask.Text = "Create Static Task";
-            this.btnCreateStaticTask.UseVisualStyleBackColor = true;
-            this.btnCreateStaticTask.Click += new System.EventHandler(this.btnCreateStaticTask_Click);
             // 
             // btnTasksForEmployee
             // 
@@ -645,9 +635,9 @@
             // 
             // btnMaxTasks
             // 
-            this.btnMaxTasks.Location = new System.Drawing.Point(26, 275);
+            this.btnMaxTasks.Location = new System.Drawing.Point(26, 278);
             this.btnMaxTasks.Name = "btnMaxTasks";
-            this.btnMaxTasks.Size = new System.Drawing.Size(341, 33);
+            this.btnMaxTasks.Size = new System.Drawing.Size(341, 39);
             this.btnMaxTasks.TabIndex = 7;
             this.btnMaxTasks.Text = "Employees with max amount of tasks last month";
             this.btnMaxTasks.UseVisualStyleBackColor = true;
@@ -655,9 +645,9 @@
             // 
             // btnSort
             // 
-            this.btnSort.Location = new System.Drawing.Point(26, 314);
+            this.btnSort.Location = new System.Drawing.Point(26, 331);
             this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(341, 28);
+            this.btnSort.Size = new System.Drawing.Size(341, 37);
             this.btnSort.TabIndex = 8;
             this.btnSort.Text = "Employees With Top 3 Highest Salaries";
             this.btnSort.UseVisualStyleBackColor = true;
@@ -665,9 +655,9 @@
             // 
             // btnEmployeesWithTasksInAMonth
             // 
-            this.btnEmployeesWithTasksInAMonth.Location = new System.Drawing.Point(26, 353);
+            this.btnEmployeesWithTasksInAMonth.Location = new System.Drawing.Point(26, 383);
             this.btnEmployeesWithTasksInAMonth.Name = "btnEmployeesWithTasksInAMonth";
-            this.btnEmployeesWithTasksInAMonth.Size = new System.Drawing.Size(341, 30);
+            this.btnEmployeesWithTasksInAMonth.Size = new System.Drawing.Size(341, 43);
             this.btnEmployeesWithTasksInAMonth.TabIndex = 9;
             this.btnEmployeesWithTasksInAMonth.Text = "All employees with tasks in a month";
             this.btnEmployeesWithTasksInAMonth.UseVisualStyleBackColor = true;
@@ -675,9 +665,9 @@
             // 
             // btnMaxTasksDocumentation
             // 
-            this.btnMaxTasksDocumentation.Location = new System.Drawing.Point(26, 401);
+            this.btnMaxTasksDocumentation.Location = new System.Drawing.Point(26, 439);
             this.btnMaxTasksDocumentation.Name = "btnMaxTasksDocumentation";
-            this.btnMaxTasksDocumentation.Size = new System.Drawing.Size(341, 38);
+            this.btnMaxTasksDocumentation.Size = new System.Drawing.Size(341, 44);
             this.btnMaxTasksDocumentation.TabIndex = 10;
             this.btnMaxTasksDocumentation.Text = "Show Documentation With Maximum Tasks";
             this.btnMaxTasksDocumentation.UseVisualStyleBackColor = true;
@@ -692,6 +682,16 @@
             this.btnAllTasksFromDocumentation.Text = "Show All Tasks Covered In Documentation";
             this.btnAllTasksFromDocumentation.UseVisualStyleBackColor = true;
             this.btnAllTasksFromDocumentation.Click += new System.EventHandler(this.btnAllTasksFromDocumentation_Click);
+            // 
+            // btnCreateStaticEmployee
+            // 
+            this.btnCreateStaticEmployee.Location = new System.Drawing.Point(26, 225);
+            this.btnCreateStaticEmployee.Name = "btnCreateStaticEmployee";
+            this.btnCreateStaticEmployee.Size = new System.Drawing.Size(341, 42);
+            this.btnCreateStaticEmployee.TabIndex = 12;
+            this.btnCreateStaticEmployee.Text = "Create static Employee";
+            this.btnCreateStaticEmployee.UseVisualStyleBackColor = true;
+            this.btnCreateStaticEmployee.Click += new System.EventHandler(this.btnCreateStaticEmployee_Click);
             // 
             // Form1
             // 
@@ -770,13 +770,13 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtIdTask;
-        private System.Windows.Forms.Button btnCreateStaticTask;
         private System.Windows.Forms.Button btnShowAllTasks;
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.Button btnMaxTasks;
         private System.Windows.Forms.Button btnEmployeesWithTasksInAMonth;
         private System.Windows.Forms.Button btnMaxTasksDocumentation;
         private System.Windows.Forms.Button btnAllTasksFromDocumentation;
+        private System.Windows.Forms.Button btnCreateStaticEmployee;
     }
 }
 
