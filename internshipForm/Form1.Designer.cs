@@ -79,7 +79,7 @@
             this.btnShowAllTasks = new System.Windows.Forms.Button();
             this.btnCreateStaticTask = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnTasksForEmployee = new System.Windows.Forms.Button();
             this.btnTasksEmployees = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnMaxTasks = new System.Windows.Forms.Button();
@@ -581,7 +581,7 @@
             this.groupBox4.Controls.Add(this.btnShowAllTasks);
             this.groupBox4.Controls.Add(this.btnCreateStaticTask);
             this.groupBox4.Controls.Add(this.button5);
-            this.groupBox4.Controls.Add(this.button4);
+            this.groupBox4.Controls.Add(this.btnTasksForEmployee);
             this.groupBox4.Controls.Add(this.btnTasksEmployees);
             this.groupBox4.Controls.Add(this.button2);
             this.groupBox4.Location = new System.Drawing.Point(720, 20);
@@ -620,14 +620,15 @@
             this.button5.Text = "Show All Tasks Covered In Documentation";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnTasksForEmployee
             // 
-            this.button4.Location = new System.Drawing.Point(26, 147);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(341, 29);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Show All Tasks For Employee";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnTasksForEmployee.Location = new System.Drawing.Point(26, 147);
+            this.btnTasksForEmployee.Name = "btnTasksForEmployee";
+            this.btnTasksForEmployee.Size = new System.Drawing.Size(341, 29);
+            this.btnTasksForEmployee.TabIndex = 3;
+            this.btnTasksForEmployee.Text = "Show All Tasks For Employee";
+            this.btnTasksForEmployee.UseVisualStyleBackColor = true;
+            this.btnTasksForEmployee.Click += new System.EventHandler(this.btnTasksForEmployee_Click);
             // 
             // btnTasksEmployees
             // 
@@ -750,7 +751,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnTasksForEmployee;
         private System.Windows.Forms.Button btnTasksEmployees;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtIdDoc;

@@ -9,9 +9,8 @@ namespace internshipForm.Model
     public class Employee
     {
         //svi propertiji moraju da budu virtual; nhibernate ih prepisuje (overriduje)
-        //treba da bude protected set za primary ali zaboravila sam taj constraint u bazi
-        // da ga on sam generise
-        public virtual int Id { get;  set; }
+
+        public virtual int Id { get; protected set; }
         public virtual string Name { get; set; }
         public virtual string Email { get; set; }
         public virtual string PhoneNumber { get; set; }

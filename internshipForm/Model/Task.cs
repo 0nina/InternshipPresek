@@ -8,7 +8,7 @@ namespace internshipForm.Model
 {
     public class Task
     {
-
+        //PROTECTED SET ZA ID
         public virtual int Id { get; protected set; }
         public virtual string Title { get; set; }
         public virtual string Description { get; set; }

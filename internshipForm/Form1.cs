@@ -52,14 +52,11 @@ namespace internshipForm
 
                 Model.Employee emp = new Model.Employee();
 
-                //ostaje da resim problem za ID
                 emp.Name = txtName.Text;
                 emp.Email = txtEmail.Text;
                 emp.DateOfBirth = Convert.ToDateTime(txtDoB.Text);
                 emp.PhoneNumber = txtPhoneNumber.Text;
                 emp.MonthlySalary = Int32.Parse(txtSalary.Text);
-                emp.Id = Int32.Parse(tbId.Text); ;
-
 
                 MessageBox.Show("Name : " + emp.Name + "email " + emp.Email + "Date of birth " + emp.DateOfBirth + "phone num " + emp.PhoneNumber);
 
@@ -68,6 +65,10 @@ namespace internshipForm
 
                 s.Flush();
                 s.Close();
+
+                MessageBox.Show(" Employee " + emp.Name + " is now available ");
+
+
             }
             catch (Exception ex)
             {
@@ -195,11 +196,14 @@ namespace internshipForm
                 task.DueDate = Convert.ToDateTime(txtDueDate.Text);
                 task.Description = txtDescription.Text;
                 task.Documentation = doc;
+                task.Assignee = employee;
+
+                s.Save(task);
+
 
                 employee.Tasks.Add(task);
                 doc.Tasks.Add(task);
 
-                s.Save(task);
 
                 s.Flush();
                 s.Close();
@@ -226,7 +230,7 @@ namespace internshipForm
                 if (task == null)
                     MessageBox.Show("There is no such task");
 
-                MessageBox.Show("Selected task is: " + task.Title);
+                MessageBox.Show("Selected task is: " + task.Title + "   Description: " + task.Description);
 
 
                 s.Close();
@@ -262,8 +266,6 @@ namespace internshipForm
                     task.Description = txtDescription.Text;
 
 
-                //Convert.ToDateTime(iDate)
-                //assignee
                 if (!String.IsNullOrEmpty(txtAssignee.Text)) 
                 {
                     int idAssignee = Int32.Parse(txtAssignee.Text);
@@ -346,10 +348,7 @@ namespace internshipForm
             {
                 ISession s = DataLayer.GetSession();
 
-                //dokumentacija ima vise 
                 internshipForm.Model.Documentation d = new Model.Documentation();
-
-                int idDoc = Int32.Parse(txtIdDocumentation.Text);
 
                 d.Length = Int32.Parse(txtLength.Text);
                 d.Language = txtLanguage.Text;
@@ -359,6 +358,11 @@ namespace internshipForm
 
                 s.Flush();
                 s.Close();
+
+
+                MessageBox.Show("Documentation successfully added.. ");
+                MessageBox.Show(" Documentation " + d.ProjectName + " is now available ");
+
             }
             catch (Exception ex)
             {
@@ -384,14 +388,14 @@ namespace internshipForm
                 DateTime oDate = Convert.ToDateTime(iDate);
                 Model.Task task = new Model.Task() { Description = "dummy data safajofaifa", DueDate = oDate, Title = "Document n0 8" };
 
+                task.Assignee = emp;
+                task.Documentation = d;
+
                 d.Tasks.Add(task);
                 emp.Tasks.Add(task);
                 
                 s.Save(d);
                 s.Save(emp);
-
-                task.Assignee = emp;
-                task.Documentation = d;
 
                 s.Save(task);
 
@@ -550,7 +554,7 @@ namespace internshipForm
             {
                 ISession s = DataLayer.GetSession();
 
-                ISQLQuery query = s.CreateSQLQuery("SELECT * FROM EMPLOYEE WHERE ID IN (SELECT ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-05-01' AND '2023-05-30' GROUP BY ASSIGNEE)");
+                ISQLQuery query = s.CreateSQLQuery("SELECT * FROM EMPLOYEE WHERE ID IN (SELECT ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-04-01' AND '2023-04-30' GROUP BY ASSIGNEE)");
                 query.AddEntity(typeof(Employee));
                 
                 IList<Employee> employees = query.List<Employee>();
@@ -621,6 +625,30 @@ namespace internshipForm
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void btnTasksForEmployee_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int employeeId = Int32.Parse(tbId.Text);
+
+                ISession s = DataLayer.GetSession();
+                IList<Model.Task> tasks = s.QueryOver<Model.Task>().Where(x => x.Assignee.Id == employeeId).List<Model.Task>();
+
+                foreach (Model.Task task in tasks)
+                {
+                    MessageBox.Show("All available tasks for employee = " + employeeId  + " :  " +  task.Title + " " + task.Description, "Current tasks of layne");
+                }
+
+
+                s.Close();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
