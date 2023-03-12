@@ -76,16 +76,17 @@
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnEmployeesWithoutATask = new System.Windows.Forms.Button();
+            this.btnCreateStaticEmployee = new System.Windows.Forms.Button();
+            this.btnAllTasksFromDocumentation = new System.Windows.Forms.Button();
+            this.btnMaxTasksDocumentation = new System.Windows.Forms.Button();
+            this.btnEmployeesWithTasksInAMonth = new System.Windows.Forms.Button();
+            this.btnSort = new System.Windows.Forms.Button();
+            this.btnMaxTasks = new System.Windows.Forms.Button();
             this.btnShowAllTasks = new System.Windows.Forms.Button();
             this.btnTasksForEmployee = new System.Windows.Forms.Button();
             this.btnTasksEmployees = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.btnMaxTasks = new System.Windows.Forms.Button();
-            this.btnSort = new System.Windows.Forms.Button();
-            this.btnEmployeesWithTasksInAMonth = new System.Windows.Forms.Button();
-            this.btnMaxTasksDocumentation = new System.Windows.Forms.Button();
-            this.btnAllTasksFromDocumentation = new System.Windows.Forms.Button();
-            this.btnCreateStaticEmployee = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -156,9 +157,9 @@
             this.label6.Location = new System.Drawing.Point(457, 87);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 16);
+            this.label6.Size = new System.Drawing.Size(21, 16);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Id";
+            this.label6.Text = "Id:";
             // 
             // btnUpdate
             // 
@@ -198,7 +199,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 16);
             this.label5.TabIndex = 4;
-            this.label5.Text = "monthly salary:";
+            this.label5.Text = "Monthly salary:";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtDoB
@@ -212,12 +213,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(391, 27);
+            this.label4.Location = new System.Drawing.Point(401, 26);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 16);
+            this.label4.Size = new System.Drawing.Size(81, 16);
             this.label4.TabIndex = 0;
-            this.label4.Text = "date of birth:";
+            this.label4.Text = "Date of birth:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtPhoneNumber
@@ -234,9 +235,9 @@
             this.label3.Location = new System.Drawing.Point(20, 89);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 16);
+            this.label3.Size = new System.Drawing.Size(100, 16);
             this.label3.TabIndex = 2;
-            this.label3.Text = "phone number: ";
+            this.label3.Text = "Phone number: ";
             // 
             // txtEmail
             // 
@@ -249,12 +250,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 55);
+            this.label2.Location = new System.Drawing.Point(20, 54);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 16);
+            this.label2.Size = new System.Drawing.Size(44, 16);
             this.label2.TabIndex = 3;
-            this.label2.Text = "email";
+            this.label2.Text = "Email:";
             // 
             // label1
             // 
@@ -303,7 +304,7 @@
             // 
             // txtIdTask
             // 
-            this.txtIdTask.Location = new System.Drawing.Point(511, 103);
+            this.txtIdTask.Location = new System.Drawing.Point(511, 86);
             this.txtIdTask.Name = "txtIdTask";
             this.txtIdTask.Size = new System.Drawing.Size(132, 22);
             this.txtIdTask.TabIndex = 7;
@@ -311,7 +312,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(449, 103);
+            this.label15.Location = new System.Drawing.Point(453, 92);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(21, 16);
             this.label15.TabIndex = 7;
@@ -329,13 +330,13 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(47, 92);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(146, 16);
+            this.label14.Size = new System.Drawing.Size(148, 16);
             this.label14.TabIndex = 5;
-            this.label14.Text = "documentation number:";
+            this.label14.Text = "Documentation number:";
             // 
             // txtAssignee
             // 
-            this.txtAssignee.Location = new System.Drawing.Point(511, 57);
+            this.txtAssignee.Location = new System.Drawing.Point(511, 52);
             this.txtAssignee.Margin = new System.Windows.Forms.Padding(4);
             this.txtAssignee.Name = "txtAssignee";
             this.txtAssignee.Size = new System.Drawing.Size(132, 22);
@@ -343,7 +344,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(511, 25);
+            this.txtDescription.Location = new System.Drawing.Point(511, 20);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(132, 22);
@@ -371,9 +372,9 @@
             this.label10.Location = new System.Drawing.Point(413, 60);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 16);
+            this.label10.Size = new System.Drawing.Size(67, 16);
             this.label10.TabIndex = 6;
-            this.label10.Text = "assignee";
+            this.label10.Text = "Assignee:";
             // 
             // label9
             // 
@@ -381,9 +382,9 @@
             this.label9.Location = new System.Drawing.Point(77, 57);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 16);
+            this.label9.Size = new System.Drawing.Size(65, 16);
             this.label9.TabIndex = 5;
-            this.label9.Text = "due date:";
+            this.label9.Text = "Due date:";
             // 
             // label8
             // 
@@ -391,9 +392,9 @@
             this.label8.Location = new System.Drawing.Point(97, 20);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 16);
+            this.label8.Size = new System.Drawing.Size(36, 16);
             this.label8.TabIndex = 4;
-            this.label8.Text = "title";
+            this.label8.Text = "Title:";
             // 
             // label7
             // 
@@ -401,9 +402,9 @@
             this.label7.Location = new System.Drawing.Point(401, 28);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 16);
+            this.label7.Size = new System.Drawing.Size(78, 16);
             this.label7.TabIndex = 2;
-            this.label7.Text = "description";
+            this.label7.Text = "Description:";
             // 
             // btnDeleteTask
             // 
@@ -512,7 +513,7 @@
             // 
             // txtIdDocumentation
             // 
-            this.txtIdDocumentation.Location = new System.Drawing.Point(511, 42);
+            this.txtIdDocumentation.Location = new System.Drawing.Point(511, 36);
             this.txtIdDocumentation.Name = "txtIdDocumentation";
             this.txtIdDocumentation.Size = new System.Drawing.Size(132, 22);
             this.txtIdDocumentation.TabIndex = 3;
@@ -520,7 +521,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(452, 42);
+            this.label13.Location = new System.Drawing.Point(460, 36);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(18, 16);
             this.label13.TabIndex = 3;
@@ -538,9 +539,9 @@
             this.Language.AutoSize = true;
             this.Language.Location = new System.Drawing.Point(114, 117);
             this.Language.Name = "Language";
-            this.Language.Size = new System.Drawing.Size(68, 16);
+            this.Language.Size = new System.Drawing.Size(71, 16);
             this.Language.TabIndex = 4;
-            this.Language.Text = "Language";
+            this.Language.Text = "Language:";
             // 
             // txtLength
             // 
@@ -554,9 +555,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(135, 78);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 16);
+            this.label12.Size = new System.Drawing.Size(50, 16);
             this.label12.TabIndex = 2;
-            this.label12.Text = "Length";
+            this.label12.Text = "Length:";
             // 
             // txtProjectName
             // 
@@ -572,10 +573,11 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 16);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Project Name";
+            this.label11.Text = "Project name:";
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnEmployeesWithoutATask);
             this.groupBox4.Controls.Add(this.btnCreateStaticEmployee);
             this.groupBox4.Controls.Add(this.btnAllTasksFromDocumentation);
             this.groupBox4.Controls.Add(this.btnMaxTasksDocumentation);
@@ -593,79 +595,39 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Operations";
             // 
-            // btnShowAllTasks
+            // btnEmployeesWithoutATask
             // 
-            this.btnShowAllTasks.Location = new System.Drawing.Point(26, 38);
-            this.btnShowAllTasks.Name = "btnShowAllTasks";
-            this.btnShowAllTasks.Size = new System.Drawing.Size(341, 30);
-            this.btnShowAllTasks.TabIndex = 7;
-            this.btnShowAllTasks.Text = "Show All Tasks";
-            this.btnShowAllTasks.UseVisualStyleBackColor = true;
-            this.btnShowAllTasks.Click += new System.EventHandler(this.btnShowAllTasks_Click);
+            this.btnEmployeesWithoutATask.Location = new System.Drawing.Point(26, 500);
+            this.btnEmployeesWithoutATask.Name = "btnEmployeesWithoutATask";
+            this.btnEmployeesWithoutATask.Size = new System.Drawing.Size(341, 41);
+            this.btnEmployeesWithoutATask.TabIndex = 13;
+            this.btnEmployeesWithoutATask.Text = "Show Employees Without Any Task";
+            this.btnEmployeesWithoutATask.UseVisualStyleBackColor = true;
+            this.btnEmployeesWithoutATask.Click += new System.EventHandler(this.btnEmployeesWithoutATask_Click);
             // 
-            // btnTasksForEmployee
+            // btnCreateStaticEmployee
             // 
-            this.btnTasksForEmployee.Location = new System.Drawing.Point(26, 147);
-            this.btnTasksForEmployee.Name = "btnTasksForEmployee";
-            this.btnTasksForEmployee.Size = new System.Drawing.Size(341, 29);
-            this.btnTasksForEmployee.TabIndex = 3;
-            this.btnTasksForEmployee.Text = "Show All Tasks For Employee";
-            this.btnTasksForEmployee.UseVisualStyleBackColor = true;
-            this.btnTasksForEmployee.Click += new System.EventHandler(this.btnTasksForEmployee_Click);
+            this.btnCreateStaticEmployee.Location = new System.Drawing.Point(26, 253);
+            this.btnCreateStaticEmployee.Name = "btnCreateStaticEmployee";
+            this.btnCreateStaticEmployee.Size = new System.Drawing.Size(341, 42);
+            this.btnCreateStaticEmployee.TabIndex = 12;
+            this.btnCreateStaticEmployee.Text = "Create static Employee";
+            this.btnCreateStaticEmployee.UseVisualStyleBackColor = true;
+            this.btnCreateStaticEmployee.Click += new System.EventHandler(this.btnCreateStaticEmployee_Click);
             // 
-            // btnTasksEmployees
+            // btnAllTasksFromDocumentation
             // 
-            this.btnTasksEmployees.Location = new System.Drawing.Point(26, 110);
-            this.btnTasksEmployees.Name = "btnTasksEmployees";
-            this.btnTasksEmployees.Size = new System.Drawing.Size(341, 31);
-            this.btnTasksEmployees.TabIndex = 2;
-            this.btnTasksEmployees.Text = "Show Employee = 1 With Their List Of Tasks";
-            this.btnTasksEmployees.UseVisualStyleBackColor = true;
-            this.btnTasksEmployees.Click += new System.EventHandler(this.btnTasksEmployees_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(26, 74);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(341, 30);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Shot All Employees";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // btnMaxTasks
-            // 
-            this.btnMaxTasks.Location = new System.Drawing.Point(26, 278);
-            this.btnMaxTasks.Name = "btnMaxTasks";
-            this.btnMaxTasks.Size = new System.Drawing.Size(341, 39);
-            this.btnMaxTasks.TabIndex = 7;
-            this.btnMaxTasks.Text = "Employees with max amount of tasks last month";
-            this.btnMaxTasks.UseVisualStyleBackColor = true;
-            this.btnMaxTasks.Click += new System.EventHandler(this.btnMaxTasks_Click);
-            // 
-            // btnSort
-            // 
-            this.btnSort.Location = new System.Drawing.Point(26, 331);
-            this.btnSort.Name = "btnSort";
-            this.btnSort.Size = new System.Drawing.Size(341, 37);
-            this.btnSort.TabIndex = 8;
-            this.btnSort.Text = "Employees With Top 3 Highest Salaries";
-            this.btnSort.UseVisualStyleBackColor = true;
-            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
-            // 
-            // btnEmployeesWithTasksInAMonth
-            // 
-            this.btnEmployeesWithTasksInAMonth.Location = new System.Drawing.Point(26, 383);
-            this.btnEmployeesWithTasksInAMonth.Name = "btnEmployeesWithTasksInAMonth";
-            this.btnEmployeesWithTasksInAMonth.Size = new System.Drawing.Size(341, 43);
-            this.btnEmployeesWithTasksInAMonth.TabIndex = 9;
-            this.btnEmployeesWithTasksInAMonth.Text = "All employees with tasks in a month";
-            this.btnEmployeesWithTasksInAMonth.UseVisualStyleBackColor = true;
-            this.btnEmployeesWithTasksInAMonth.Click += new System.EventHandler(this.btnEmployeesWithTasksInAMonth_Click);
+            this.btnAllTasksFromDocumentation.Location = new System.Drawing.Point(26, 208);
+            this.btnAllTasksFromDocumentation.Name = "btnAllTasksFromDocumentation";
+            this.btnAllTasksFromDocumentation.Size = new System.Drawing.Size(341, 39);
+            this.btnAllTasksFromDocumentation.TabIndex = 11;
+            this.btnAllTasksFromDocumentation.Text = "Show All Tasks Covered In Documentation";
+            this.btnAllTasksFromDocumentation.UseVisualStyleBackColor = true;
+            this.btnAllTasksFromDocumentation.Click += new System.EventHandler(this.btnAllTasksFromDocumentation_Click);
             // 
             // btnMaxTasksDocumentation
             // 
-            this.btnMaxTasksDocumentation.Location = new System.Drawing.Point(26, 439);
+            this.btnMaxTasksDocumentation.Location = new System.Drawing.Point(26, 450);
             this.btnMaxTasksDocumentation.Name = "btnMaxTasksDocumentation";
             this.btnMaxTasksDocumentation.Size = new System.Drawing.Size(341, 44);
             this.btnMaxTasksDocumentation.TabIndex = 10;
@@ -673,25 +635,75 @@
             this.btnMaxTasksDocumentation.UseVisualStyleBackColor = true;
             this.btnMaxTasksDocumentation.Click += new System.EventHandler(this.btnMaxTasksDocumentation_Click);
             // 
-            // btnAllTasksFromDocumentation
+            // btnEmployeesWithTasksInAMonth
             // 
-            this.btnAllTasksFromDocumentation.Location = new System.Drawing.Point(26, 183);
-            this.btnAllTasksFromDocumentation.Name = "btnAllTasksFromDocumentation";
-            this.btnAllTasksFromDocumentation.Size = new System.Drawing.Size(341, 36);
-            this.btnAllTasksFromDocumentation.TabIndex = 11;
-            this.btnAllTasksFromDocumentation.Text = "Show All Tasks Covered In Documentation";
-            this.btnAllTasksFromDocumentation.UseVisualStyleBackColor = true;
-            this.btnAllTasksFromDocumentation.Click += new System.EventHandler(this.btnAllTasksFromDocumentation_Click);
+            this.btnEmployeesWithTasksInAMonth.Location = new System.Drawing.Point(26, 397);
+            this.btnEmployeesWithTasksInAMonth.Name = "btnEmployeesWithTasksInAMonth";
+            this.btnEmployeesWithTasksInAMonth.Size = new System.Drawing.Size(341, 44);
+            this.btnEmployeesWithTasksInAMonth.TabIndex = 9;
+            this.btnEmployeesWithTasksInAMonth.Text = "All employees with tasks in a month";
+            this.btnEmployeesWithTasksInAMonth.UseVisualStyleBackColor = true;
+            this.btnEmployeesWithTasksInAMonth.Click += new System.EventHandler(this.btnEmployeesWithTasksInAMonth_Click);
             // 
-            // btnCreateStaticEmployee
+            // btnSort
             // 
-            this.btnCreateStaticEmployee.Location = new System.Drawing.Point(26, 225);
-            this.btnCreateStaticEmployee.Name = "btnCreateStaticEmployee";
-            this.btnCreateStaticEmployee.Size = new System.Drawing.Size(341, 42);
-            this.btnCreateStaticEmployee.TabIndex = 12;
-            this.btnCreateStaticEmployee.Text = "Create static Employee";
-            this.btnCreateStaticEmployee.UseVisualStyleBackColor = true;
-            this.btnCreateStaticEmployee.Click += new System.EventHandler(this.btnCreateStaticEmployee_Click);
+            this.btnSort.Location = new System.Drawing.Point(26, 354);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(341, 37);
+            this.btnSort.TabIndex = 8;
+            this.btnSort.Text = "Employees With Top 3 Highest Salaries";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
+            // 
+            // btnMaxTasks
+            // 
+            this.btnMaxTasks.Location = new System.Drawing.Point(26, 301);
+            this.btnMaxTasks.Name = "btnMaxTasks";
+            this.btnMaxTasks.Size = new System.Drawing.Size(341, 47);
+            this.btnMaxTasks.TabIndex = 7;
+            this.btnMaxTasks.Text = "Top 5 Employees With Max Amount Of Tasks Last Month";
+            this.btnMaxTasks.UseVisualStyleBackColor = true;
+            this.btnMaxTasks.Click += new System.EventHandler(this.btnMaxTasks_Click);
+            // 
+            // btnShowAllTasks
+            // 
+            this.btnShowAllTasks.Location = new System.Drawing.Point(26, 38);
+            this.btnShowAllTasks.Name = "btnShowAllTasks";
+            this.btnShowAllTasks.Size = new System.Drawing.Size(341, 38);
+            this.btnShowAllTasks.TabIndex = 7;
+            this.btnShowAllTasks.Text = "Show All Tasks";
+            this.btnShowAllTasks.UseVisualStyleBackColor = true;
+            this.btnShowAllTasks.Click += new System.EventHandler(this.btnShowAllTasks_Click);
+            // 
+            // btnTasksForEmployee
+            // 
+            this.btnTasksForEmployee.Location = new System.Drawing.Point(26, 164);
+            this.btnTasksForEmployee.Name = "btnTasksForEmployee";
+            this.btnTasksForEmployee.Size = new System.Drawing.Size(341, 38);
+            this.btnTasksForEmployee.TabIndex = 3;
+            this.btnTasksForEmployee.Text = "Show All Tasks For Employee";
+            this.btnTasksForEmployee.UseVisualStyleBackColor = true;
+            this.btnTasksForEmployee.Click += new System.EventHandler(this.btnTasksForEmployee_Click);
+            // 
+            // btnTasksEmployees
+            // 
+            this.btnTasksEmployees.Location = new System.Drawing.Point(26, 126);
+            this.btnTasksEmployees.Name = "btnTasksEmployees";
+            this.btnTasksEmployees.Size = new System.Drawing.Size(341, 32);
+            this.btnTasksEmployees.TabIndex = 2;
+            this.btnTasksEmployees.Text = "Show Employee = 1 With Their List Of Tasks";
+            this.btnTasksEmployees.UseVisualStyleBackColor = true;
+            this.btnTasksEmployees.Click += new System.EventHandler(this.btnTasksEmployees_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(26, 82);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(341, 38);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Shot All Employees";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // Form1
             // 
@@ -777,6 +789,7 @@
         private System.Windows.Forms.Button btnMaxTasksDocumentation;
         private System.Windows.Forms.Button btnAllTasksFromDocumentation;
         private System.Windows.Forms.Button btnCreateStaticEmployee;
+        private System.Windows.Forms.Button btnEmployeesWithoutATask;
     }
 }
 

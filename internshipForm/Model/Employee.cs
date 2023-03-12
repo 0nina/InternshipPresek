@@ -8,15 +8,14 @@ namespace internshipForm.Model
 {
     public class Employee
     {
-        //svi propertiji moraju da budu virtual; nhibernate ih prepisuje (overriduje)
-
         public virtual int Id { get; protected set; }
         public virtual string Name { get; set; }
         public virtual string Email { get; set; }
         public virtual string PhoneNumber { get; set; }
         public virtual DateTime DateOfBirth { get; set; }
         public virtual int MonthlySalary { get; set; }
-        //modeliramo 1:N   ;  1 employee izvrsava vise taskova
+
+        // 1: N  1 employee multiple tasks
         public virtual IList<Task> Tasks { get; set; }
 
         public Employee()

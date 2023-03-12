@@ -100,7 +100,6 @@ namespace internshipForm
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //prvo ucitavanje 
             try
             {
                 ISession s = DataLayer.GetSession();
@@ -177,9 +176,6 @@ namespace internshipForm
             try
             {
                 ISession s = DataLayer.GetSession();
-
-                //pribavljanje employee-a kome treba dodeliti task
-                //MORA DA SE SREDE ID-jevi da ih baza sama dodljuje, u suprotnom je sve ok
 
                 internshipForm.Model.Employee employee = new Model.Employee();
                 int idEmployee = Int32.Parse(txtAssignee.Text);
@@ -303,7 +299,6 @@ namespace internshipForm
                     MessageBox.Show("Enter task id that you wish to delete");
                     return;
                 }
-                //proveriti
                 int idTask = Int32.Parse(txtIdTask.Text);
                 Model.Task task = s.Load<internshipForm.Model.Task>(idTask);
 
@@ -718,6 +713,31 @@ namespace internshipForm
                 s.Save(employee);
 
                 s.Flush();
+                s.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnEmployeesWithoutATask_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ISQLQuery query = s.CreateSQLQuery("SELECT * FROM EMPLOYEE WHERE ID NOT IN (SELECT ASSIGNEE FROM TASK GROUP BY ASSIGNEE);");
+                query.AddEntity(typeof(Employee));
+
+                IList<Employee> employees = query.List<Employee>();
+
+                foreach (Employee emp in employees)
+                {
+                    MessageBox.Show("Employees without any tasks : " + emp.Name + " email: " + emp.Email);
+
+                }
                 s.Close();
 
             }

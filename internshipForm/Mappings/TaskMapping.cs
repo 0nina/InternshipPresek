@@ -13,22 +13,23 @@ namespace internshipForm.Mappings
     {
         public TaskMapping()
 
-        { //Mapiranje tabele
+        { 
             Table("TASK");
 
-            //mapiranje primarnog kljuca
+            //primary key
             Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
 
-            //mapiranje svojstava
+            // attributes
+
             Map(x => x.Title, "TITLE");
             Map(x => x.Description, "DESCRIPTION");
             Map(x => x.DueDate, "DUE_DATE");
 
-            //mapiranje veze 1:N Employee-Task
+            // 1:N Employee-Task
             References(x => x.Assignee).Column("ASSIGNEE").LazyLoad().Cascade.All();
 
 
-            //mapiranje veze 1:N Documentation-Task
+            // 1:N Documentation-Task
             References(x => x.Documentation).Column("DOCUMENTATION_NUMBER").LazyLoad().Cascade.All();
 
         }

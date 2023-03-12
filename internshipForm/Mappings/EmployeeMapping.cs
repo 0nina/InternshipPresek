@@ -13,7 +13,6 @@ namespace internshipForm.Mappings
         {
             Table("EMPLOYEE");
 
-            //tako se mapira primarni kljuc i koristicu trigger za generisanje primarnog kljuca
             Id(x => x.Id, "ID").GeneratedBy.TriggerIdentity();
             
             Map(x => x.Name, "NAME");
