@@ -114,7 +114,7 @@ namespace internshipForm
                 int idEmployee = Int32.Parse(tbId.Text);
                 internshipForm.Model.Employee employee = s.Load<internshipForm.Model.Employee>(idEmployee);
 
-                if ( !String.IsNullOrEmpty(txtName.Text) )
+                if (!String.IsNullOrEmpty(txtName.Text))
                     employee.Name = txtName.Text;
 
                 if (!String.IsNullOrEmpty(txtEmail.Text))
@@ -256,7 +256,7 @@ namespace internshipForm
                 int idTask = Int32.Parse(txtIdTask.Text);
                 internshipForm.Model.Task task = s.Load<internshipForm.Model.Task>(idTask);
 
-                if(!String.IsNullOrEmpty(txtTitle.Text))
+                if (!String.IsNullOrEmpty(txtTitle.Text))
                     task.Title = txtTitle.Text;
 
                 if (!String.IsNullOrEmpty(txtDueDate.Text))
@@ -266,7 +266,7 @@ namespace internshipForm
                     task.Description = txtDescription.Text;
 
 
-                if (!String.IsNullOrEmpty(txtAssignee.Text)) 
+                if (!String.IsNullOrEmpty(txtAssignee.Text))
                 {
                     int idAssignee = Int32.Parse(txtAssignee.Text);
                     Employee em = s.Load<internshipForm.Model.Employee>(idAssignee);
@@ -298,7 +298,7 @@ namespace internshipForm
             {
                 ISession s = DataLayer.GetSession();
 
-                if ( String.IsNullOrEmpty(txtIdTask.Text))
+                if (String.IsNullOrEmpty(txtIdTask.Text))
                 {
                     MessageBox.Show("Enter task id that you wish to delete");
                     return;
@@ -380,7 +380,7 @@ namespace internshipForm
             {
                 ISession s = DataLayer.GetSession();
 
-                Model.Documentation d = new Model.Documentation() {  Language = "c", Length = 45, ProjectName = "Dummy proj" };
+                Model.Documentation d = new Model.Documentation() { Language = "c", Length = 45, ProjectName = "Dummy proj" };
 
                 Model.Employee emp = new Model.Employee() { DateOfBirth = DateTime.Today, MonthlySalary = 123456, PhoneNumber = "069242424", Name = "MarcBlack@gmail.com", Email = "markBlack" };
 
@@ -393,7 +393,7 @@ namespace internshipForm
 
                 d.Tasks.Add(task);
                 emp.Tasks.Add(task);
-                
+
                 s.Save(d);
                 s.Save(emp);
 
@@ -454,7 +454,7 @@ namespace internshipForm
 
                 s.Flush();
                 s.Close();
-                
+
                 MessageBox.Show("Documentation successfully deleted.. ");
             }
             catch (Exception ex)
@@ -482,7 +482,7 @@ namespace internshipForm
                     doc.ProjectName = txtProjectName.Text;
 
                 if (!String.IsNullOrEmpty(txtLength.Text))
-                    doc.Length = Int32.Parse( txtLength.Text) ;
+                    doc.Length = Int32.Parse(txtLength.Text);
 
                 if (!String.IsNullOrEmpty(txtLanguage.Text))
                     doc.Language = txtLanguage.Text;
@@ -511,7 +511,7 @@ namespace internshipForm
 
                 IList<Employee> employees = s.QueryOver<Employee>().List<Employee>();
 
-                foreach(Employee emp in employees)
+                foreach (Employee emp in employees)
                 {
                     MessageBox.Show(" Employee name: " + emp.Name + " contact : " + emp.Email, "Current employees");
                 }
@@ -520,7 +520,7 @@ namespace internshipForm
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -528,12 +528,12 @@ namespace internshipForm
 
         private void btnTasksEmployees_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 ISession s = DataLayer.GetSession();
                 IList<Model.Task> tasks = s.QueryOver<Model.Task>().Where(x => x.Assignee.Id == 1).List<Model.Task>();
 
-                foreach(Model.Task task in tasks)
+                foreach (Model.Task task in tasks)
                 {
                     MessageBox.Show("All available tasks for employee = 1 : " + task.Title + " " + task.Description, "Current tasks of layne");
                 }
@@ -556,18 +556,18 @@ namespace internshipForm
 
                 ISQLQuery query = s.CreateSQLQuery("SELECT * FROM EMPLOYEE WHERE ID IN (SELECT ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-04-01' AND '2023-04-30' GROUP BY ASSIGNEE)");
                 query.AddEntity(typeof(Employee));
-                
+
                 IList<Employee> employees = query.List<Employee>();
 
-                foreach(Employee emp in employees)
+                foreach (Employee emp in employees)
                 {
-                    MessageBox.Show("Employees with tasks in a month: " + emp.Name +  " email: " + emp.Email);
+                    MessageBox.Show("Employees with tasks in a month: " + emp.Name + " email: " + emp.Email);
 
                 }
                 s.Close();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -575,7 +575,7 @@ namespace internshipForm
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 ISession s = DataLayer.GetSession();
 
@@ -591,7 +591,7 @@ namespace internshipForm
                 }
                 s.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -599,16 +599,13 @@ namespace internshipForm
 
         private void btnMaxTasks_Click(object sender, EventArgs e)
         {
- /*SELECT * FROM EMPLOYEE WHERE ID IN ( SELECT TOP 2 ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-05-01' AND '2023-05-30' GROUP BY ASSIGNEE  ORDER BY COUNT(ID) DESC);*/
-            
+            /*SELECT * FROM EMPLOYEE WHERE ID IN ( SELECT TOP 2 ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-05-01' AND '2023-05-30' GROUP BY ASSIGNEE  ORDER BY COUNT(ID) DESC);*/
+
             try
             {
-
-                //dinamicki odredjivanje koji je mesec i ubacivanje  u query
-
                 ISession s = DataLayer.GetSession();
 
-                ISQLQuery query = s.CreateSQLQuery("SELECT * FROM EMPLOYEE WHERE ID IN ( SELECT TOP 5 ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-05-01' AND '2023-05-30' GROUP BY ASSIGNEE  ORDER BY COUNT(ID) DESC);");
+                ISQLQuery query = s.CreateSQLQuery("SELECT * FROM EMPLOYEE WHERE ID IN ( SELECT TOP 5 ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-04-01' AND '2023-04-30' GROUP BY ASSIGNEE  ORDER BY COUNT(ID) DESC);");
                 query.AddEntity(typeof(Employee));
 
                 IList<Employee> employees = query.List<Employee>();
@@ -620,7 +617,7 @@ namespace internshipForm
                 }
                 s.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -638,7 +635,7 @@ namespace internshipForm
 
                 foreach (Model.Task task in tasks)
                 {
-                    MessageBox.Show("All available tasks for employee = " + employeeId  + " :  " +  task.Title + " " + task.Description, "Current tasks of layne");
+                    MessageBox.Show("All available tasks for employee = " + employeeId + " :  " + task.Title + " " + task.Description, "Current tasks of layne");
                 }
 
 
@@ -650,5 +647,69 @@ namespace internshipForm
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnMaxTasksDocumentation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                ISession s = DataLayer.GetSession();
+
+                ISQLQuery query = s.CreateSQLQuery("SELECT * FROM DOCUMENTATION WHERE ID = (SELECT TOP 1 DOCUMENTATION_NUMBER FROM TASK GROUP BY DOCUMENTATION_NUMBER ORDER BY COUNT(DOCUMENTATION_NUMBER) DESC);");
+                query.AddEntity(typeof(Documentation));
+
+                IList<Documentation> documentation = query.List<Documentation>();
+
+                foreach (Documentation doc in documentation)
+                {
+                    MessageBox.Show("Documentation covering maximum amount of tasks: " + doc.ProjectName + " in language: " + doc.Language);
+
+                }
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnAllTasksFromDocumentation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //input ID in field "Documentation number: " in Tasks section
+
+                ISession s = DataLayer.GetSession();
+
+                int idDocumentation = Int32.Parse(txtIdDoc.Text);
+
+                ISQLQuery query = s.CreateSQLQuery("SELECT * FROM TASK WHERE DOCUMENTATION_NUMBER = " + idDocumentation);
+
+                query.AddEntity(typeof(Model.Task));
+
+                IList<Model.Task> tasks = query.List<Model.Task>();
+
+                foreach (Model.Task task in tasks)
+                {
+                    MessageBox.Show("All tasks included in documentation number : " + idDocumentation + " Task: " + task.Title + " Description " + task.Description);
+
+                }
+                s.Close();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        
+        }
+
+
+
+
     }
 }
+
+
+    
