@@ -413,20 +413,18 @@ namespace internshipForm
 
                 ISession s = DataLayer.GetSession();
 
-                IQuery q = s.CreateQuery("FROM TASK AS s ORDER BY s.ID");
+                IList<Model.Task> tasks = s.QueryOver<Model.Task>().List<Model.Task>();
 
-                IList<internshipForm.Model.Task> tasks = (IList<internshipForm.Model.Task>)q.List<Model.Task>();
-                //vracamo listu taskova
-                
-                foreach(Model.Task task in tasks)
+                foreach (Model.Task task in tasks)
                 {
-                    MessageBox.Show("Currently registered tasks: " + task.Title + " ; " + task.Description);
+                    MessageBox.Show(" Task title: " + task.Title + " description : " + task.Description, "Current tasks");
                 }
 
                 s.Close();
 
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -524,5 +522,105 @@ namespace internshipForm
             }
         }
 
+        private void btnTasksEmployees_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                ISession s = DataLayer.GetSession();
+                IList<Model.Task> tasks = s.QueryOver<Model.Task>().Where(x => x.Assignee.Id == 1).List<Model.Task>();
+
+                foreach(Model.Task task in tasks)
+                {
+                    MessageBox.Show("All available tasks for employee = 1 : " + task.Title + " " + task.Description, "Current tasks of layne");
+                }
+
+
+                s.Close();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnEmployeesWithTasksInAMonth_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                ISQLQuery query = s.CreateSQLQuery("SELECT * FROM EMPLOYEE WHERE ID IN (SELECT ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-05-01' AND '2023-05-30' GROUP BY ASSIGNEE)");
+                query.AddEntity(typeof(Employee));
+                
+                IList<Employee> employees = query.List<Employee>();
+
+                foreach(Employee emp in employees)
+                {
+                    MessageBox.Show("Employees with tasks in a month: " + emp.Name +  " email: " + emp.Email);
+
+                }
+                s.Close();
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                ISession s = DataLayer.GetSession();
+
+                ISQLQuery query = s.CreateSQLQuery("SELECT TOP 3 * FROM EMPLOYEE ORDER BY MONTHLY_SALARY DESC");
+                query.AddEntity(typeof(Employee));
+
+                IList<Employee> employees = query.List<Employee>();
+
+                foreach (Employee emp in employees)
+                {
+                    MessageBox.Show("Employees with highest salaries: " + emp.Name + " email: " + emp.Email);
+
+                }
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnMaxTasks_Click(object sender, EventArgs e)
+        {
+ /*SELECT * FROM EMPLOYEE WHERE ID IN ( SELECT TOP 2 ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-05-01' AND '2023-05-30' GROUP BY ASSIGNEE  ORDER BY COUNT(ID) DESC);*/
+            
+            try
+            {
+
+                //dinamicki odredjivanje koji je mesec i ubacivanje  u query
+
+                ISession s = DataLayer.GetSession();
+
+                ISQLQuery query = s.CreateSQLQuery("SELECT * FROM EMPLOYEE WHERE ID IN ( SELECT TOP 5 ASSIGNEE FROM TASK WHERE DUE_DATE BETWEEN '2023-05-01' AND '2023-05-30' GROUP BY ASSIGNEE  ORDER BY COUNT(ID) DESC);");
+                query.AddEntity(typeof(Employee));
+
+                IList<Employee> employees = query.List<Employee>();
+
+                foreach (Employee emp in employees)
+                {
+                    MessageBox.Show("Employees with most completed tasks: " + emp.Name + " email: " + emp.Email);
+
+                }
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }

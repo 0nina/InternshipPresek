@@ -80,10 +80,11 @@
             this.btnCreateStaticTask = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnTasksEmployees = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnMaxTasks = new System.Windows.Forms.Button();
             this.btnSort = new System.Windows.Forms.Button();
+            this.btnEmployeesWithTasksInAMonth = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -574,13 +575,14 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnEmployeesWithTasksInAMonth);
             this.groupBox4.Controls.Add(this.btnSort);
             this.groupBox4.Controls.Add(this.btnMaxTasks);
             this.groupBox4.Controls.Add(this.btnShowAllTasks);
             this.groupBox4.Controls.Add(this.btnCreateStaticTask);
             this.groupBox4.Controls.Add(this.button5);
             this.groupBox4.Controls.Add(this.button4);
-            this.groupBox4.Controls.Add(this.button3);
+            this.groupBox4.Controls.Add(this.btnTasksEmployees);
             this.groupBox4.Controls.Add(this.button2);
             this.groupBox4.Location = new System.Drawing.Point(720, 20);
             this.groupBox4.Name = "groupBox4";
@@ -627,14 +629,15 @@
             this.button4.Text = "Show All Tasks For Employee";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnTasksEmployees
             // 
-            this.button3.Location = new System.Drawing.Point(26, 110);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(341, 31);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Show All Documentation";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnTasksEmployees.Location = new System.Drawing.Point(26, 110);
+            this.btnTasksEmployees.Name = "btnTasksEmployees";
+            this.btnTasksEmployees.Size = new System.Drawing.Size(341, 31);
+            this.btnTasksEmployees.TabIndex = 2;
+            this.btnTasksEmployees.Text = "Show Employee = 1 With Their List Of Tasks";
+            this.btnTasksEmployees.UseVisualStyleBackColor = true;
+            this.btnTasksEmployees.Click += new System.EventHandler(this.btnTasksEmployees_Click);
             // 
             // button2
             // 
@@ -652,8 +655,9 @@
             this.btnMaxTasks.Name = "btnMaxTasks";
             this.btnMaxTasks.Size = new System.Drawing.Size(341, 33);
             this.btnMaxTasks.TabIndex = 7;
-            this.btnMaxTasks.Text = "Employees with max amount of tasks";
+            this.btnMaxTasks.Text = "Employees with max amount of tasks last month";
             this.btnMaxTasks.UseVisualStyleBackColor = true;
+            this.btnMaxTasks.Click += new System.EventHandler(this.btnMaxTasks_Click);
             // 
             // btnSort
             // 
@@ -661,8 +665,19 @@
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(341, 28);
             this.btnSort.TabIndex = 8;
-            this.btnSort.Text = "Sort By Salary";
+            this.btnSort.Text = "Employees With Top 3 Highest Salaries";
             this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
+            // 
+            // btnEmployeesWithTasksInAMonth
+            // 
+            this.btnEmployeesWithTasksInAMonth.Location = new System.Drawing.Point(26, 353);
+            this.btnEmployeesWithTasksInAMonth.Name = "btnEmployeesWithTasksInAMonth";
+            this.btnEmployeesWithTasksInAMonth.Size = new System.Drawing.Size(341, 30);
+            this.btnEmployeesWithTasksInAMonth.TabIndex = 9;
+            this.btnEmployeesWithTasksInAMonth.Text = "All employees with tasks in a month";
+            this.btnEmployeesWithTasksInAMonth.UseVisualStyleBackColor = true;
+            this.btnEmployeesWithTasksInAMonth.Click += new System.EventHandler(this.btnEmployeesWithTasksInAMonth_Click);
             // 
             // Form1
             // 
@@ -736,7 +751,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnTasksEmployees;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox txtIdDoc;
         private System.Windows.Forms.Label label14;
@@ -746,6 +761,7 @@
         private System.Windows.Forms.Button btnShowAllTasks;
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.Button btnMaxTasks;
+        private System.Windows.Forms.Button btnEmployeesWithTasksInAMonth;
     }
 }
 
